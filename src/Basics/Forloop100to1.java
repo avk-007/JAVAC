@@ -1,6 +1,6 @@
 package Basics;
-
-public class x {
+//class5
+public class Forloop100to1 {
 
     public static void main(String[] args) {
         for(int j=100;j>=1 ;j--)
