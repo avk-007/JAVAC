@@ -10,7 +10,7 @@ public class operators {
         int i=2;
         int a =2;
         int b=9;
-         boolean result=a1>i &&   a<b;// true
+         boolean result=a1>i && a<b;// true
         boolean result1=a1>i || a<b;
         System.out.println(result);
         System.out.println(result1);
