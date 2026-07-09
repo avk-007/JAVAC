@@ -38,21 +38,23 @@ public class Student {
         students[1]=student2;
         students[2]=student3;
 
-        for (int i=0;i<students.length;i++){
-         /* //String  concatenation  students[i].marks + " : "
+/*        for (int i=0;i<students.length;i++){
+         *//* //String  concatenation  students[i].marks + " : "
                                + students[i].rollno + " : "
-                                + students[i].name */
+                                + students[i].name *//*
             System.out.println
                     (
                       students[i].marks + " : "
                     + students[i].rollno + " : "
                     + students[i].name
                     );
+        }*/
+
+        //for enhanced loop other way Use Student not int
+
+        for (Student studs : students ){
+            System.out.println(studs.marks+" "
+            +studs.name+" " + studs.rollno);
         }
-
-
-
-
-
     }
 }
