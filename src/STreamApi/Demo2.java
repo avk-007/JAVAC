@@ -3,7 +3,9 @@ package STreamApi;
 import java.io.FilterOutputStream;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -43,12 +45,21 @@ public class Demo2 {
         Integer reduce = stream3.reduce(0, (c, e) -> c + e);
         System.out.println(reduce);*/
 
-        //we can write the above in single line
+        //now make the program short  by defining function in fun vice versa
+
+        Function<Integer,Integer> fun=n->n*2;
+     //T reduce(T identity, BinaryOperator<T> accumulator);
+        Integer reduce1 = nums.stream()
+                .filter(n -> n % 2 == 0)
+                .map(fun)
+                .reduce(0, (c, e) -> c + e);
+        System.out.println(reduce1);
+ /*       //we can write the above in single line
         Integer reduce1 = nums.stream()
                 .filter(n -> n % 2 == 0)
                 .map(n -> n * 2)
                 .reduce(0, (c, e) -> c + e);
-        System.out.println(reduce1);
+        System.out.println(reduce1);*/
 
   /*      Predicate<Integer> p=new Predicate<Integer>() {
             public boolean test(Integer integ) {
