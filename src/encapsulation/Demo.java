@@ -32,7 +32,7 @@ class Human{
     }
 
 
-//or you can generate egetter and setters
+//or you can generate getter and setters
 
     /*public int getAge() {
         return age;

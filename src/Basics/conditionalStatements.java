@@ -1,6 +1,6 @@
 package Basics;
 //class3
-public class conditionalStatements {
+public class  conditionalStatements {
     public static void main(String[] args) {
 
 /*        //3 values compare

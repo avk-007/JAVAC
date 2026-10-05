@@ -2,13 +2,11 @@ package Arrays;
 
 public class arrayDemo {
     public static void main(String[] args) {
-
 //create a fixed size array
-
-        //multiple values
-      //  int nums[]={5,6,7,8};
+//multiple values
+//  int nums[]={5,6,7,8};
         //to make it dynamic
-        int nums[]=new int[4];   //by deafault all the values are zero
+        int nums[]=new int[4];   //by default all the values are zero
 
         //you can change the value at index
          nums[0]=2;
