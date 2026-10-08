@@ -26,7 +26,7 @@ public class DEmoEx {
     public static void main(String[] args) {
         //trick for dealing with classes with inheritance
         //parent to child
-        //interfaces refenences
+        //interfaces references
         Computer laptopp=new Laptop();
         Computer desktopp=new Desktop();
         Developer abhishek=new Developer();

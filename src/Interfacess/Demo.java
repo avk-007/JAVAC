@@ -1,9 +1,6 @@
 package Interfacess;
 
-
-
 interface   A{
-
     int age = 10; //final and static
     String name = "bengaluru";
     void show();

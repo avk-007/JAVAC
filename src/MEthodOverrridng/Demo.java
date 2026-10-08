@@ -15,7 +15,7 @@ class B extends A{
     @Override
     public String show(){
         //when we want both same methods of parent ana child class
-        //wehen we want to resue the method of parent implemenation
+        //when we want to resue the method of parent implemenation
         super.show();
         System.out.println("B show");
         return "";

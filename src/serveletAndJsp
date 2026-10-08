@@ -1,0 +1,192 @@
+1. What is a Servlet?
+→ A Java class that handles HTTP requests and generates HTTP responses. It runs inside a Servlet Container (e.g., Tomcat).
+
+2. What is JSP?
+→ JavaServer Pages. Used to create dynamic web pages using HTML + Java. JSP is compiled into a Servlet.
+
+3. Servlet vs JSP
+Servlet  → Business logic / Request processing
+JSP      → Presentation layer (UI)
+
+4. Servlet Lifecycle
+init()      → Called once when servlet is created.
+service()   → Handles every client request.
+destroy()   → Called before servlet is destroyed.
+
+5. HTTP Methods
+doGet()     → Read data (GET)
+doPost()    → Create data (POST)
+doPut()     → Update data (PUT)
+doDelete()  → Delete data (DELETE)
+
+6. What is HttpServlet?
+→ Base class used to create Servlets. Provides doGet(), doPost(), etc.
+
+7. What is HttpServletRequest?
+→ Used to read client request data.
+
+Common Methods
+request.getParameter("id")
+request.getHeader("Authorization")
+request.getCookies()
+request.getSession()
+request.getAttribute("name")
+request.setAttribute("name", value)
+
+8. What is HttpServletResponse?
+→ Used to send data back to the client.
+
+Common Methods
+response.sendRedirect("/login")
+response.setStatus(200)
+response.getWriter().println("Hello")
+response.addCookie(cookie)
+
+9. What is HttpSession?
+→ Stores user-specific data across multiple requests (e.g., login information).
+
+10. What is ServletContext?
+→ Stores application-wide shared data accessible by all Servlets.
+
+11. What is DispatcherServlet?
+→ Front Controller of Spring MVC. It receives all requests and forwards them to the appropriate Controller.
+
+Flow
+Browser
+   ↓
+DispatcherServlet
+   ↓
+Controller
+   ↓
+Service
+   ↓
+Repository
+   ↓
+Database
+
+12. What is @Controller?
+→ Returns a View (JSP, Thymeleaf, etc.).
+
+13. What is @RestController?
+→ Returns JSON/XML directly. Combination of @Controller + @ResponseBody.
+
+14. Difference: @Controller vs @RestController
+@Controller      → Returns View
+@RestController  → Returns JSON
+
+15. What is View Resolver?
+→ Maps logical view names to JSP files.
+
+Example
+return "home";
+
+Resolves to
+/WEB-INF/views/home.jsp
+
+16. What is Model?
+→ Passes data from Controller to JSP.
+
+Example
+model.addAttribute("name", "Abhi");
+
+JSP
+${name}
+
+17. What is ModelAndView?
+→ Holds both Model data and View name.
+
+18. What is @RequestMapping?
+→ Maps a URL to a Controller method.
+
+19. What is @GetMapping?
+→ Handles HTTP GET requests.
+
+20. What is @PostMapping?
+→ Handles HTTP POST requests.
+
+21. What is @PutMapping?
+→ Handles HTTP PUT requests.
+
+22. What is @DeleteMapping?
+→ Handles HTTP DELETE requests.
+
+23. What is @RequestParam?
+→ Reads query parameters.
+
+Example
+/users?id=10
+
+@RequestParam int id
+
+24. What is @PathVariable?
+→ Reads values from the URL path.
+
+Example
+/users/10
+
+@PathVariable int id
+
+25. What is @RequestBody?
+→ Converts JSON request body into a Java object.
+
+26. What is @ResponseBody?
+→ Converts Java object into JSON response.
+
+27. What is @ModelAttribute?
+→ Binds form data to a Java object.
+
+28. What is JSTL?
+→ JSP Standard Tag Library used instead of Java scriptlets.
+
+Common Tags
+<c:if>
+<c:forEach>
+<c:choose>
+
+29. What is Expression Language (EL)?
+→ Accesses data in JSP without Java code.
+
+Examples
+${user.name}
+${employee.id}
+${list}
+
+30. JSP Lifecycle
+Translation → Compilation → Class Loading → Initialization → Request Processing → Destroy
+
+31. Servlet vs Spring MVC
+
+Servlet
+- Uses doGet(), doPost()
+- Manual request handling
+- More boilerplate
+
+Spring MVC
+- Uses annotations
+- Automatic request mapping
+- Cleaner code
+- Easier to maintain
+
+32. Spring MVC Request Flow
+
+Client
+ ↓
+Tomcat
+ ↓
+DispatcherServlet
+ ↓
+Controller
+ ↓
+Service
+ ↓
+Repository
+ ↓
+Database
+ ↑
+Controller
+ ↑
+View Resolver
+ ↑
+JSP
+ ↑
+Browser

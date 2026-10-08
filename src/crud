@@ -1,0 +1,136 @@
+@Entity
+public class Student{
+@Id
+@GeneratedValue(strategy=GenerationType.IDENTITY)
+private Long id;
+private String name;
+private int age;
+private String email;
+
+public Student(){}
+
+public Student(Long id,String name,int age,String email){
+this.id=id;
+this.name=name;
+this.age=age;
+this.email=email;
+}
+
+public Long getId(){return id;}
+public void setId(Long id){this.id=id;}
+
+public String getName(){return name;}
+public void setName(String name){this.name=name;}
+
+public int getAge(){return age;}
+public void setAge(int age){this.age=age;}
+
+public String getEmail(){return email;}
+public void setEmail(String email){this.email=email;}
+}
+
+public interface StudentRepository extends JpaRepository<Student,Long>{}
+
+@Service
+public class StudentService{
+
+@Autowired
+private StudentRepository repository;
+
+public Student saveStudent(Student student){
+return repository.save(student);
+}
+
+public List<Student> getAllStudents(){
+return repository.findAll();
+}
+
+public Student getStudentById(Long id){
+return repository.findById(id).orElse(null);
+}
+
+public Student updateStudent(Long id,Student student){
+Student existing=repository.findById(id).orElse(null);
+if(existing==null)
+return null;
+
+existing.setName(student.getName());
+existing.setAge(student.getAge());
+existing.setEmail(student.getEmail());
+
+return repository.save(existing);
+}
+
+public String deleteStudent(Long id){
+repository.deleteById(id);
+return "Student Deleted Successfully";
+}
+}
+
+@RestController
+@RequestMapping("/students")
+public class StudentController{
+
+@Autowired
+private StudentService service;
+
+@PostMapping
+public Student createStudent(@RequestBody Student student){
+return service.saveStudent(student);
+}
+
+@GetMapping
+public List<Student> getStudents(){
+return service.getAllStudents();
+}
+
+@GetMapping("/{id}")
+public Student getStudent(@PathVariable Long id){
+return service.getStudentById(id);
+}
+
+@PutMapping("/{id}")
+public Student updateStudent(@PathVariable Long id,@RequestBody Student student){
+return service.updateStudent(id,student);
+}
+
+@DeleteMapping("/{id}")
+public String deleteStudent(@PathVariable Long id){
+return service.deleteStudent(id);
+}
+}
+
+/*
+application.properties
+
+spring.datasource.url=jdbc:h2:mem:studentdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+POST   /students
+GET    /students
+GET    /students/{id}
+PUT    /students/{id}
+DELETE /students/{id}
+
+{
+"name":"Abhishek",
+"age":25,
+"email":"abhi@gmail.com"
+}
+
+H2 Console:
+http://localhost:8080/h2-console
+
+JDBC URL:
+jdbc:h2:mem:studentdb
+Username: sa
+Password: blank
+*/

@@ -1,22 +1,26 @@
 package practiceX;
 
-class  A{
-    public A() {
-        System.out.println("in A");
-    }
-	}
-class B extends A{
-    public B() {
-        System.out.println("in B");
-    }
+class A{
 
-    public B(int n){
-        System.out.println("in B with int");
+    void show(){
+        System.out.println("in A ");
+    }
+    static class B {
+
+        public void config(){
+            System.out.println("in B ");
+        }
     }
 }
+
 public class Demo {
     public static void main(String[] args) {
-      B obj= new B(5);
+        A obj=new A();
+        obj.show();
+        A.B obj1=new A.B();
+        obj1.config();
+
+
     }
     }
 
