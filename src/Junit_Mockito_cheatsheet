@@ -1,0 +1,83 @@
+==========================
+JUnit 5 Cheat Sheet
+==========================
+@Test
+@BeforeEach
+@AfterEach
+@BeforeAll
+@AfterAll
+
+AAA Pattern
+Arrange → Act → Assert
+
+Assertions
+assertEquals(expected, actual);
+assertNotEquals(expected, actual);
+assertTrue(condition);
+assertFalse(condition);
+assertNull(object);
+assertNotNull(object);
+assertSame(expected, actual);
+assertNotSame(expected, actual);
+assertArrayEquals(expected, actual);
+assertThrows(Exception.class, () -> { ... });
+
+Mockito
+@Mock
+@InjectMocks
+@ExtendWith(MockitoExtension.class)
+when(repo.findById(1L)).thenReturn(Optional.of(user));
+verify(repo).findById(1L);
+verify(repo, times(1)).save(user);
+verify(repo, never()).delete(user);
+
+Argument Matchers
+any()
+anyString()
+anyLong()
+eq(value)
+
+MockMvc
+get("/users")
+post("/users")
+put("/users/{id}")
+delete("/users/{id}")
+
+HTTP Status
+status().isOk();
+status().isCreated();
+status().isBadRequest();
+status().isUnauthorized();
+status().isForbidden();
+status().isNotFound();
+status().isInternalServerError();
+
+JSON Assertions
+jsonPath("$.id")
+jsonPath("$.name")
+jsonPath("$.email")
+
+Basic Test Template
+@Test
+void shouldDoSomething() {
+    // Arrange
+    // Act
+    // Assert
+}
+
+Mockito Template
+when(...).thenReturn(...);
+service.method();
+assertEquals(...);
+verify(...);
+
+Remember
+Arrange
+↓
+when(...).thenReturn(...)
+↓
+Act
+↓
+Assert
+↓
+verify(...)

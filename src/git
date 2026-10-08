@@ -1,0 +1,98 @@
+==========================
+Git Interview Cheat Sheet
+==========================
+
+Configuration
+git config --global user.name "Your Name"      # Set Git username
+git config --global user.email "you@example.com" # Set Git email
+git config --list                              # View Git configuration
+
+Status & History
+git status                                     # Show modified, staged, and untracked files
+git log                                        # Show complete commit history
+git log --oneline                              # Show compact commit history
+git show                                       # Show details of the latest commit
+git diff                                       # Show unstaged changes
+
+Staging & Commit
+git add <file>                                 # Stage a specific file
+git add .                                      # Stage all changed files
+git commit -m "message"                        # Save staged changes to local repository
+
+Branching
+git branch                                     # List all local branches
+git branch <branch-name>                       # Create a new branch
+git checkout <branch>                          # Switch to an existing branch
+git checkout -b <branch>                       # Create and switch to a new branch
+git switch <branch>                            # Switch branches (recommended)
+git switch -c <branch>                         # Create and switch to a new branch
+
+Merge & Rebase
+git merge <branch>                             # Merge another branch into the current branch
+git rebase <branch>                            # Replay commits on top of another branch
+
+Remote
+git remote -v                                  # Show configured remote repositories
+git remote add origin <url>                    # Add a remote repository
+
+Push & Pull
+git push origin <branch>                       # Push local commits to remote
+git push -u origin <branch>                    # Push and set upstream branch
+git pull origin <branch>                       # Fetch and merge latest changes
+git fetch                                      # Download remote changes without merging
+
+Undo Changes
+git restore <file>                             # Discard changes in a file
+git restore --staged <file>                    # Unstage a staged file
+git reset --soft HEAD~1                        # Undo last commit, keep staged changes
+git reset --mixed HEAD~1                       # Undo last commit, unstage changes
+git reset --hard HEAD~1                        # Undo last commit and discard changes
+git revert <commit-id>                         # Create a new commit that reverses an old commit
+
+Stash
+git stash                                      # Temporarily save uncommitted changes
+git stash list                                 # List all stashes
+git stash pop                                  # Apply and remove latest stash
+git stash apply                                # Apply latest stash without removing it
+
+Tags
+git tag                                        # List all tags
+git tag v1.0                                   # Create a new tag
+git push origin v1.0                           # Push tag to remote
+
+Cherry Pick
+git cherry-pick <commit-id>                    # Apply a specific commit to the current branch
+
+Conflict Resolution
+git status                                     # Show files with merge conflicts
+git add .                                      # Mark conflicts as resolved
+git commit -m "Resolved merge conflict"        # Complete the merge after resolving conflicts
+
+Cleanup
+git clean -f                                   # Delete untracked files
+git clean -fd                                  # Delete untracked files and directories
+
+==========================
+Top 20 Commands to Memorize
+==========================
+
+git init                                       # Initialize a Git repository
+git clone                                      # Copy a remote repository
+git status                                     # Check current repository status
+git add .                                      # Stage all changes
+git commit -m "message"                        # Commit staged changes
+git push                                       # Upload commits to remote repository
+git pull                                       # Download and merge remote changes
+git fetch                                      # Download remote changes only
+git branch                                     # List or create branches
+git checkout                                   # Switch branches
+git switch                                     # Modern way to switch branches
+git merge                                      # Merge branches
+git rebase                                     # Reapply commits on another branch
+git stash                                      # Save uncommitted work temporarily
+git log --oneline                              # View short commit history
+git diff                                       # Compare file changes
+git reset                                      # Undo commits or unstage changes
+git revert                                     # Undo a commit safely
+git cherry-pick                                # Copy a specific commit
+git remote -v                                  # Show remote repository details
