@@ -1,0 +1,998 @@
+ # Java 8 Features Order
+# Interview Order
+
+1. Lambda Expressions
+2. Functional Interfaces
+3. Default Methods
+4. Static Methods
+5. Method Reference (::)
+6. Stream API
+7. Collectors
+8. Optional
+9. Date & Time API (`java.time`)
+
+## 1. Lambda Expressions
+
+## 2. Functional Interfaces
+
+### User Defined Functional Interface
+
+### Predefined Functional Interfaces
+- Predicate<T>
+- Function<T, R>
+- Consumer<T>
+- Supplier<T>
+- UnaryOperator<T>
+- BinaryOperator<T>
+- BiPredicate<T, U>
+- BiFunction<T, U, R>
+- BiConsumer<T, U>
+
+---
+
+## 3. Default Methods
+---
+
+## 4. Static Methods
+---
+## 5. Method Reference (::)
+- Class::staticMethod
+- object::instanceMethod
+- Class::instanceMethod
+- Class::new
+---
+## 6. Stream API
+### Basics
+- Collection vs Stream
+- Internal vs External Iteration
+- Lazy Evaluation
+- Intermediate vs Terminal Operations
+- Sequential Stream
+- Parallel Stream
+---
+# Stream Creation Methods
+- Stream.of()
+- Stream.builder()
+- Stream.iterate()
+- Stream.generate()
+- Arrays.stream()
+- Collection.stream()
+- Collection.parallelStream()
+---
+# Intermediate Operations
+- filter()
+- map()
+- flatMap()
+- distinct()
+- sorted()
+- peek()
+- limit()
+- skip()
+- takeWhile()
+- dropWhile()
+- sequential()
+- parallel()
+- unordered()
+---
+# Terminal Operations
+- forEach()
+- forEachOrdered()
+- collect()
+- toArray()
+- reduce()
+- count()
+- min()
+- max()
+- findFirst()
+- findAny()
+- anyMatch()
+- allMatch()
+- noneMatch()
+- iterator()
+- spliterator()
+---
+# Collectors Methods
+- Collectors.toList()
+- Collectors.toSet()
+- Collectors.toMap()
+- Collectors.joining()
+- Collectors.groupingBy()
+- Collectors.partitioningBy()
+- Collectors.counting()
+- Collectors.summingInt()
+- Collectors.averagingInt()
+- Collectors.mapping()
+- Collectors.collectingAndThen()
+---
+# Optional Class
+- Optional.of()
+- Optional.ofNullable()
+- Optional.empty()
+- get()
+- isPresent()
+- ifPresent()
+- orElse()
+- orElseGet()
+- orElseThrow()
+- map()
+- flatMap()
+- filter()
+- isEmpty()
+---
+# Frequently Used Utility Methods
+- Comparator.comparing()
+- Comparator.reverseOrder()
+- Comparator.naturalOrder()
+- Objects.equals()
+- Objects.nonNull()
+- Objects.isNull()
+---
+
+session 1 to 4::
+
+jdk beta--1995
+jdk 1.0-legacy
+
+--
+jdk is the most popular because of functional programming and
+                                   functional interfaces.
+
+jdk 26
+
+jdk to enabled parellel programming or parallel processing
+
+
+Day2:session 3
+
+LE doesnt having name then how we call Le,and who will call LE
+Answer---> FunctionInterface (FIT)
+
+it is used to call/invoke the LE
+1.A FI contains Only one abstract method ,,i.e a interface which contains only one mehods
+2.will have single abstract method--SAM
+3.A FI can have default methods and static mehtods..
+
+session2-3#::FUnctional Interaface
+----
+RUnnable ---run abstract method
+Callable--call();
+Comparable--compareTo();
+
+LE==removes the implementattion classes
+reduce no if classes ad no of lines of source code
+
+session 5::
+1.contains many defaults,,one abstract and many static methods
+2.it is call or invoke the LE
+  d.m1();
+
+Q--why FI should contains only one abstract method??
+Answer-->LE can only  provide the  implementation for one one method
+,that's why FI will have only ine abstract method.
+
+Q.what is the advantages of FI annotation?
+answer ()->
+
+//Default methods useCases??
+Q.Default methods methods introduced in jdk8??
+answer--> default void m(){}
+
+important points::
+//default methods are concreate methods
+//lE are used to replacethe implemementation classes
+//deafault methods  are used to replacethe implemementation classes
+
+default methods is used to avoid implementation classes
+
+//ex--default methods wrt to multiple inhertiace
+
+
+//////abstract class vs interface//////
+-FUnctional Interface with default methods !=Abstract class
+1--Abstract class cant refer LE where as Functional Interface
+with default methods can refer Lambda Expression
+
+2--Inside Abstract class we can ovverride object class methods but cant
+do it in functional interface
+
+3--inside Abstract class we can declare constructors but
+cant declare constrcutirs inside interface
+
+4--Abstract class can talk about sttate of the object
+but interface never talks about state of an object
+
+5--in abstract class we can declare instance and static blocks
+but insisde interface we cant declare instance and static blocks
+
+6--
+inside abstract class we can declare instance variable which are required for
+child classes
+inside interface every variable always public ,static,final
+and we cant declare instance variables
+=-----------------------------------------------+
+
+//STATIC  methods inside interface
+Functional interface =Sam +0 or more static and deafults methods
+
+1.from jdk 1.8 version we can declare static methods inside interface
+2.static methods are used to define general utility methods
+3.static methods will not inherit into impl classes ,so if we want to call staticMethods we need to call direcly from classname
+4.overriding concepts are not applicable of interface static methods .
+5.we can write main method inside interface because it suppports static methods
+
+Utility  Methods--
+the code which used in many places is called Utility methods
+
+UseCAse--
+During project development we may required logic ,
+so that logic would be kept inside of utility class.
+
+//utility class -->we can use it using className.methodName();
+
+public class CardServiceUtil{
+}
+public class EmailSsrvice{
+//email sender
+}
+
+13:34 mins in session 6::
+
+//using static methods we can reduce no of classes in project
+
+@FunctionalInterface
+public class Demo{
+public void m1();
+default void m2(){
+S.o.p("m2() method");
+}
+
+//write business logic to get last five digit cardnum from given input
+public static String lastFiveDigitCardNum(String cardnum){
+                                                          }
+//input is DD-MM-YYYY then ouput would be DD/MM/YYYY
+public static String dateFormate(String formate, String date){
+                                                              }
+using static methods inside interface we can reduce no of classes in project;
+
+=-----------------------------------------------+=-----------------------------------------------+
+session7::Lambda Expression for collection
+          Basic Knowledge on collections ::List,Set,Map,HashSet,TreeSet,TreeMap
+          Comparator --to perform sort the elements
+=-----------------------------------------------+=-----------------------------------------------+
+-->Lambda Expression is used to write readable,maintainable and concise code
+i.e it will focus on less no of lines of code
+-->Functional interface is used to call lambda expression
+
+Collections--group of individual objects  stored in single entity
+::List,Set,Map
+
+List::insertion order is preserved.
+      duplicate is allowed.
+
+      ArrayList -LinkedList - vector
+
+Set::insertion order is not preserved.
+      duplicate is not allowed allowed.
+
+      HashSet--TreeSet
+
+ Map::group of object in key value pair
+     Hashmap--TreeMap
+
+=-------------------------------------------------------+-----------------------------------------------=
+ SESSION 8 with LE
+--Collection objects are List,Set,Map
+--Using LE we can reduce no if lines of code and avoid implementation  classes
+--Collection will hold the-->
+  A-wrapper classes objects like String,Integer,etc.
+  B-User Defined objects like Employee,Products,Order etc.
+
+=-------------------------------------------------------+-----------------------------------------------=
+
+Session 9::
+1.LE is used to reduce the no of lines od code and
+avid implemetation class
+2..FInterface is used to call LambdaExpression
+3.FUnctional Interface are 2 types
+  a-user defined Interface --developer write using @functionalInterface
+  b-Predfined FUncational Interface
+   1.predicate
+   2.Function
+   3.consumer
+   4.supplier
+   5.BiPredicate
+   6.BiFUnction
+   7.BiConsumer
+   8.UnaryOperator
+   9.BinaryOperator
+
+1.predicate
+A.it is a boolean Value function
+predicate is used to perform some condition check
+i.e--wherever conditional checks are there use predicate instead of write more code
+     predicate will replace the if statements
+
+ interface Predicate<T>{
+ boolean test(T t)
+ }
+
+ public boolean test(String s){             (s)->{
+ if(string.length>6){                             if(string.length>6){
+                                                  return true
+ return true;                                      }else
+ }else                                                  rerurn false;}
+ return false;
+ }
+
+
+trick::Predicate with LE
+
+Predicate<String s> p= s -> s.length>6;
+p.test("sreenutech");
+
+if more condition checks are there use Predicate
+
+if(object!= null && Object.getName().equals("sreenutech"){
+//b.logiv
+}
+
+//this above is called as predicate joining
+-->if we want to perform multiple conditions then we should use predicate joining like
+a.negate()  b.and()  c.or()
+
+
+int [] x={10,20,30,40,50,60,70,80}
+
+filter the date with >10 and even nos
+
+Predicate<Integer> p1=i->i>10;
+Predicate<Integer> p1=i->i%2==0;
+
+//trick use Predicate
+Predicate<Integer> p3 =p1.and(p2);
+for(int x1 : x2){
+if(p3.test(x1){
+sout(x1)
+}}
+
+predicate is a functionalInterface which will have 1 abstracrt,o or more static and dedaults methods
+
+Predicate--
+test()
+or()
+and()
+negate()
+isequal()--static method
+
+note--use predicate to filter the data
+i.e ---to filter the data we should apply some businnes logic
+       use predicate to implement business logic
+       i.e try to avoid if stattements from code
+
+
+//predicate --with one arguments
+//predicate --with one or more arguments is BiPredicate
+//Predicate  -IntPredictae,LongPredicate,DOublePredicate
+=-----------------------------------------------+=-----------------------------------------------+
+Session10::
+=-----------------------------------------------+=-----------------------------------------------+
+FUnctional Interface are used to call the LE--
+1-predicate is used to implement busniness logic or conditonal checks
+2-we can replace with predicate wherever conditional checks are there
+
+public interface Predicate<T>{
+public boolean test(T t);
+}
+methods:
+and() method input is Predicate<T>---?SAM (abstractemthod)
+or()//default method
+negate() --reverse //default method
+
+
+isequal() //static methods
+ //isEquals static method
+Predicate<String> pname=Predicate.isEqual("abhishek");
+            System.out.println(pname.test("abhishek")); //true
+            System.out.println(pname.test("abhis")); //false
+
+BiPredicate
+ --->>
+ here input args are only one sometimes input arguments may be more than 2 or 2
+ then we can use BiPredicate
+ BiPredicate:--:
+ it will take 2 input args
+ it is also to do the condtional checks
+
+ systax::
+ interface Bipredicate{
+       public boolean test(T t ,U u)
+ }
+note::
+//there is no equals method avaialable in BiPredicate
+//always true or false will come
+
+
+""autoboxing and auto-unboxing""
+autoboxing   -->primitive(int i=0) to wrapper Object(Integer i=0) conversion is autoboxing
+auto-unboxing-->wrapper Object(Integer i=0) to primitive(int i=0) conversion is auto-unboxing
+
+
+//PRimitive Predicate::
+while peroforming conditional checks the developer forcing to do the autoboxing and unboxing
+which will cause the performace issue
+to overcome this problems we should use Primitive Predicate interface
+
+EX--IntPredicate,LongPredicate,DoublePredicate
+
+
+
+there are 3 types of predicate Interface:
+1.single arg --Predicate<T>,, isequals is there only
+2.two arg --BiPredicate<T,U>,, isequals is not there
+3.primitive predicate--IntPredicate,LongPredicate,DoublePredicate,,test,and or is there only isequals is not there
+
+
+=-----------------------------------------------+=-----------------------------------------------+
+Predefined FUnctional Inerface --Function:::
+1,Function is an Functional interface
+public interface Function<T, R> {
+
+    /**
+     * Applies this function to the given argument.
+     *
+     * @param t the function argument
+     * @return the function result
+     */
+    R apply(T t);
+
+ 2-it is exactly  same as Predicate but function returns any value but
+ predicate always return boolean value
+ note--@return the function result
+
+ syntax::
+
+interface Function<T, R> {
+     /**
+      * Applies this function to the given argument.
+      *
+      * @param t the function argument
+      * @return the function result
+      */
+ R apply(T t);
+ }
+
+ ex;;
+ Function<String,Integer> f=s->s.length();
+ f.apply("sreenu"); //op
+
+
+ Q.When we should go for Predicate and function??
+ ans--Predicate-->If we want to filter the data use Predicate
+ if we want to filter the data i.e out of "n" elements the result maybe n or n-1 or n-2
+ ex---list-10 elements ,after filter apply then 10 or 5 or 3 element.
+function::
+ if  we dont filter the data but the logic should be apply for all the elements
+ if input "n" elements--apply some logic --output 'n' elements with Resultant output.
+
+=-----------------------------------------------+=-----------------------------------------------+
+ session11: function
+ predefined functional interface--function
+=-----------------------------------------------+=-----------------------------------------------+
+public interface Function<T,R>{
+R apply(T t)
+//where t is input
+//R is return any value
+}
+
+
+public interface Predicate<T>{
+boolean test(T t)
+}
+
+
+Predicate vs FUnction::
+1.a.if we want filter the data bases on condtion then choose Predicate.
+  b.if we want to apply some details to all then choose Function
+2.a.if we use Predicate on n elements then result would be either n or <n elements
+     while applying the condition data might be filtered
+  b.if we use function on "n" element then result would be n elements
+    here we are not applying any condition,applling some changes on all the n elements.
+
+3.  Predicate have only one abstract method i.e apply()
+   function have
+
+Ques..can we use both   Predicate and FUnction??
+ans--yes,depends upon required we would use both
+     first apply Predicate and then apply function
+       List<Employee> emplist2= new ArrayList<>();
+             for (Employee e:emplist){
+                 if (p.test(e)){
+                    f.apply(e);
+                    emplist2.add(e);
+                 }
+             }
+        2.or you can first use function and use Predicate
+
+ "FUNCTION CHAINING" ::
+ ----------------------
+1.combined 2 or more functions in a single function is called Function chaining..
+
+2.THERE are 2 methods to perform function chaining
+a.compose()
+b.andThen()
+3.these 2 methods are default methods and input and output both is function
+4.examples::
+andThen()
+  f1.andThen(f2); //first f1 will be applied followed by f2 will be applied
+compose()
+ f1.compose(f2); f2 will be applied followed by f1.
+
+5-Functional interface will have 1 abstarct method,2 default method and 1 static method
+
+
+=-----------------------------------------------+=-----------------------------------------------+
+Session::12
+=-----------------------------------------------+=-----------------------------------------------+
+Predefined Functional interface -Function::
+
+function is of 3 types
+1.single argument function
+A function will have only one i/p arg is called single argument Function
+public interface Function<T,R>{
+R apply(T);
+}
+
+2.2 argumnets function
+A function that will have 2 input args is called BiFunction or 2 arg function.
+ex:public interface BIFunction<T,U<R>{
+   R apply(T t,U u);
+                                    }
+
+3.Primitive Type Function==byte, short, int, long, float, double, char, and boolean.
+a.while performing business logic there would be so many  autoboxing and unboxing opearations
+would happen due to this application performance will impact.
+
+Primitive Functional Interfaces (Java 17)
+=========================================
+
+There are 4 categories of primitive functional interfaces.
+
+----------------------------------------------------------
+1. Primitive Input Functional Interfaces
+----------------------------------------------------------
+These interfaces take a primitive as input and return a generic type.
+
+1. IntFunction<R>
+   R apply(int value)
+
+2. LongFunction<R>
+   R apply(long value)
+
+3. DoubleFunction<R>
+   R apply(double value)
+
+----------------------------------------------------------
+2. Primitive Output Functional Interfaces
+----------------------------------------------------------
+These interfaces take a generic type as input and return a primitive.
+
+1. ToIntFunction<T>
+   int applyAsInt(T value)
+
+2. ToLongFunction<T>
+   long applyAsLong(T value)
+
+3. ToDoubleFunction<T>
+   double applyAsDouble(T value)
+
+----------------------------------------------------------
+3. Both Input and Output are Primitive
+----------------------------------------------------------
+These interfaces take one primitive input and return another primitive.
+
+Input: int
+
+1. IntToLongFunction
+   long applyAsLong(int value)
+
+2. IntToDoubleFunction
+   double applyAsDouble(int value)
+
+Input: long
+
+3. LongToIntFunction
+   int applyAsInt(long value)
+
+4. LongToDoubleFunction
+   double applyAsDouble(long value)
+
+Input: double
+
+5. DoubleToIntFunction
+   int applyAsInt(double value)
+
+6. DoubleToLongFunction
+   long applyAsLong(double value)
+
+----------------------------------------------------------
+4. Primitive Output BiFunction Interfaces
+----------------------------------------------------------
+These interfaces take two generic inputs and return a primitive.
+
+1. ToIntBiFunction<T, U>
+   int applyAsInt(T t, U u)
+
+2. ToLongBiFunction<T, U>
+   long applyAsLong(T t, U u)
+
+3. ToDoubleBiFunction<T, U>
+   double applyAsDouble(T t, U u)
+
+
+=-----------------------------------------------+=-----------------------------------------------+
+Session 13
+=-----------------------------------------------+=-----------------------------------------------+
+Predefined Functional Interface --CONSUMER
+1.if the method doesnt return anything then it is called consumer Function interface
+i.e these are called void methods
+
+2.Predicate Function will return a value but counsumer doesnt return any value
+3.Type of Consumer
+1.one argument 2,two argument 3.Primitive COnsumer
+
+1-one argument consumer
+ a.if the input is only one argument  then it is called argument consumer
+ public interface Consumer<T>{
+  abstract void accept(T t);
+ default Consumer andThen(Consumer c)
+
+ //default methods as well there is andThen)
+ }
+
+
+ 2-two argument consumer--BiConsumer
+  a.if the input has 2 argument  then it is called BiConsumer
+  public interface Consumer<T,U>{
+   abstract void accept(T t,U u);
+  default BiConsumer andThen(BiConsumer c,)
+  //default methods as well there is andThen()
+  }
+
+
+Ques:: can we implement Predicate FUnction and consumer in one scenario??
+yes::
+Predicate --filter the salary less than < 20000
+Function --apply increment 5000 whos salary is less than 20000
+consumer --display all the data
+
+3--Primitive Consumer:
+a.to improve application peroformance we should use Primitive interface.
+b.if we know out input is always primitive values then use primitive interface
+c.primitive COnsumer Intefaces are
+ 1.IntConsumer --public void accept(int i)
+ 2.LongConsumer --public void accept(long l)
+ 3.DoubleConsumer --public void accept(Double d)
+
+ 4.ObjectIntConsumer<T> --public void accept (T t,int i);
+ 5.ObjectLongConsumer<T> --public void accept (T t,logn l);
+ 6.ObjectDoubleConsumer<T> --public void accept (T t,double  d);
+
+ ---
+ COnsumer chaining::
+combined 2 or more consumers into single consumer is called cconsumer chaining
+andThen() is a deafault method and it is used to perform group of all consumer object
+
+syntax:
+c.andThen(c2).andThen(c3).accept()
+
+Example::
+   Consumer<Employee> chaining=c1.andThen(c2).andThen(c3).andThen(c4);
+        chaining.accept(emp);
+ -----------
+ ::BiCONSUMER::
+ if the input is two argumets and return nothing itis called biConsumer
+ ex:->
+      List<Employee> empList= EmployeeUtil.getEmployeeList();
+         BiConsumer<Employee, Double> c=//lE
+                 (e,increment)-> System.out.println(e.getSalary()+increment);
+         for (Employee e:empList) {
+            c.accept(e,7000.0);
+         }
+  -----------  ---------------------------  ---------------------------
+  ConsumerPrimitives::
+  IntCOnsumer etc
+        //No type cast is required
+        IntConsumer c=i-> System.out.println(i*i);
+        c.accept(50);
+
+=-----------------------------------------------+=-----------------------------------------------+
+   Session 16:: Supplier
+  1. it is a one of predefined functional interface
+  2. if we dont need to provide any input but get something
+    i,e get something without passing input
+
+   3.syntax::
+    public interface Supplier<R>{
+    R get(); //abstract method
+    }
+  4.consumer and supplier are counter parts
+  5.Supplier Interface doesnt have any default and sttaic methods
+  6.Supplier interface doesnt have any chaining concept
+  7.supplier interface doesnt have two arguments because it will not  expect any input
+  8.supplier interface are primitive Supplier interface
+
+Supplier Primitives
+--if we use object to genearte Otp then use normal supplier
+--if we will use primitive to generate opt then use primitive
+
+there 4 types of Supplier primitives
+1.IntSupplier -- getAsInt()
+2.DoubleSupplier --getAsDouble()
+3.LongSupplier --getAsLong()
+4.BooleanSupplier --getAsBoolean()
+=-----------------------------------------------+=-----------------------------------------------+
+Session 17--Unary and Binary Operator ::
+Function<T,R> {
+//1 abstract method
+R apply(T t);
+}
+
+interface BiFunction<T,U,R>{
+R apply(T t ,U u)
+}
+
+interface BiFUnction <T,T,T>{
+R apply (T t,U u)
+}
+
+
+unary operator::
+1.id the input and output will be same type then you should use unary operator
+2.unaryOperator is the child interface of FUnction Interface
+
+//with 1 arg
+Public interface UnaryOperator<T>{
+public T  appply(T t)
+}
+
+Ex:with function and then UnaryOperator concept
+Function <Interger,Integer> f=i->i*i;
+sout(f.apply(10));
+
+//with unary operator which will avoid unnecessary
+UnaryOperator<Integer> f1=i->i*i;
+sout(f1.apply(6));
+
+3.unaryOpearator always acts as several autoboxing
+4.if there are several autoboxing and unboxing are there prefered primitive unary operator operator
+  a.
+  interface IntUnaryOperator{
+  public T applyAsInt(int i)
+  }
+
+    b.
+    interface LongUnaryOperator{
+    public T applyAsLong(long l)
+    }
+
+     c.
+      interface DoubleUnaryOperator{
+      public T applyAsDouble(double d)
+      }
+
+ note::  UnaryOperator<T> extends Function
+ unary operator that always return its input arg
+  -----------------
+   Binary Operator::
+   1.if the function wil have 2 input arguments then it would be BiFUnction
+   2.if the Function will have 3 argument (2 input and 1 output)
+    if al the three arguments will be same type
+    then we should go for Binary Operator.
+
+   3.Binary operator is the child interaface of FUnction interface
+ ex:
+   public interface BinaryOperator{
+   public T apply (T t1,T t2)
+   }
+
+  3.b-
+  Represents an operation upon two operands of the same type, producing a result of the same type as the operands. This is a specialization of BiFunction for the case
+  where the operands and the result are all of the same type.
+  ex- d,d =d(double)
+
+BiFunction<String s1,String s2> f=(s1,s2)->s1.concat(s2);
+BinaryOperator<String> f1=(s1,s2)->s1.concat(s2);
+
+
+4.Use primitive BinaryOperator to improve the application performance
+by reducing no of autoboxing and unboxing operators
+
+there are 3 types
+1.IntBinaryOperator
+2.LongBinaryOperator
+3.DoubleBinaryOperator
+
+-----------------++-----------------++-----------------++-----------------
+Session 17::
+Method Reference  (::) Operator
+
+1.Function interface is also used to call Lambda Expression
+2.FUnctional interface is also used to call Method Reference
+
+@FunctionInterface
+public interface Demo{
+public void m1();
+}
+
+
+ class Test
+ {
+     main(){
+     public static void m2(){
+    sout("m2 method reference")
+                            }
+ }
+
+ Demo d=(){
+ sout("m1 method")
+ }
+ d.m1();
+
+
+ Demo d=Test::m2;
+
+
+1.java 8 provides a new features is callled Method refernce
+in c++ it is called method resolution operator
+it was used to resolve the ambiguity in c++
+2.the main objective of Lambda expression is to reduce the no of lines in code.
+3.the main objective of method reference is used to no of lines in
+lambda expression body just call method defination it will take care to
+place complete method body into lambda expression
+
+there are 3 types of method referneces(::)
+1.reference to static method
+2.reference to instance method
+3.reference to Constructor
+4.reference to arbitrary  type
+
+ex1-
+@FunctionalInterface
+public interface Demo{              public class DemoImpl{
+                                    public void m1(){                                     sout(" m2() method")
+                                                    }
+public void m1();                    }
+}
+}
+
+//how to call this lambda of this expression
+
+public class TestMain{
+main(){
+//Demo d =()->(sout("hello"))
+//instead of this LE write
+//Method Reference
+DemoImpl demoImpl=new DemoImpl();
+Demo d=demoImpl::m1(); //if it instance method
+Demo d=DemoImpl::m1(); //static method created object explicitly
+
+}
+}
+
+//Special method in Lambda
+
+lambda Expression-
+s->s.length()
+s->s.toUpperCase()
+(i1,i2)->i1.compareTo(i2)
+(s1,s2)->s1.compareTo(s2)
+
+Method reference-
+String :: length()
+String :: toUpperCase()()
+Integer::compareTo
+
+
+syntax ::
+1.static Method
+LE-> (args)->ClassName.staticMethod(args)
+MR-> Classname::staticMethodName();
+
+2.Instance Method
+LE-> (args)->ObjectName.instanceMethodName(args)
+MR-> ObjectName::instanceMethodName();
+
+3.Constructor
+LE-> (args)->new ClassName(args)
+MR-> ClassName::new ();
+
+4. Instance Method Reference of an Arbitrary Object of a Particular Type
+LE -> (obj, args) -> obj.instanceMethod(args) i.e s -> s.length()
+MR -> ClassName::instanceMethod  i.e String::length i.e Employee::getEmployee
+-----------------++-----------------++-----------------++-----------------
+
+note--
+Method reference can be invoked by FUnctional interface here
+functional interface method and method definatation signature(input arguments)
+should be same,else it will give compilation error.
+
+
+-----------------++-----------------++-----------------++-----------------
+Stream API
+-----------------++-----------------++-----------------++-----------------
+which java version java 8 and 11
+1.Arrays Overview:
+process of storing homogeneous data in continues memory locations is called as array
+data stored based on index
+index starts from 0
+Array will suport homogeneous data and does not support heterogeneous data.
+size is fixed in array means once we can mention size then we cant increase decrease size at run time based on requirement
+
+syntax:way to store
+ dataType[] variable =new dataType[size];
+ int[] e=new int[4];
+ e[0]=1;
+ e[1]=2;
+ e[2]=3;
+ e[3]=4;
+
+  dataType[] variable ={v1,v2,v3};
+ int[] i={10,20,30,40,50};
+
+ why will go for collections??
+ array will supoort primitive and doesnt support object
+ size is fixed
+ array will support homegenous data
+
+ why Collections?
+ support will support object
+ size is growable in nature
+ collection will support homegenous as well as hetergeneous data.
+
+ Stream Api-
+  Stream Api is used to process data in sequence manner.
+  stream Api does not store any data.
+   Stream Api will capture data from source,source may be arrays or collections.
+    Stream Api is a collection of intermediate operations + terminal
+
+
+ Ques..why stream Api??
+ Requirement:: remove duplicates from Arraylist??
+   //without Stream Api
+         List<String> list=new ArrayList<String>();
+         List<String> uniqueList=new ArrayList<String>();
+         list.add("A");
+         list.add("B");
+         list.add("C");
+         list.add("C");
+         list.add("A");
+ /* // without Stream API
+    for (String i:list){
+             if (!uniqueList.contains(i)){
+                 uniqueList.add(i);
+             }
+         }
+         System.out.println(uniqueList);*/
+
+
+ we will resolve Complexity by using Stream Api
+ we will reduce application code by using stream API
+ we will improve application performance by using stream api by reducing the lines of codes
+
+ -----------------++-----------------++-----------------++-----------------
+ Why Functional Programming??
+ *************************
+ the way of promoting the programming with functions is called as a Functional Progarmming
+ Functional progarmming introduced from java 8
+
+ function::
+ developer provide some input output to function
+ function will capture input output and process the i/o finally gives some response
+ Functional programming is an fundamental approach in problem solving
+ we will reduce code by using Functional Programming.
+ we will achieve function
+
+
+
+
+

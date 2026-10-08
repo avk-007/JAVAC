@@ -1,0 +1,337 @@
+Function interface::
+how to write userdefined functional interface
+how to use predefined functional interface
+a.predicate
+b.BiPredicate
+c.primitive Predicate
+
+a.Function
+b.BiFunction
+c.Primitive Function intefaces
+
+a.Consumer
+b.BiConsumer
+c.primitive Consumer interfaces
+
+a.Supplier
+b.primitive Supplier interfaces
+
+a.unaryOperator
+b.primitive unary Operator interface
+
+a.binary Operator
+b.primitive binaryOperator interfaces
+
+Method Reference  (::) Operator
+functional interface is also used to call method references
+
+Stream API
+Stream Api;;
+we wil achieve functional programming by using
+Function interface
+Lambda Expression
+methods reference
+
+Structural programming vs Functional Programming?
+
+Structural  Programming will follow top down approach where as FUnctional programming follow bottom-up approach
+structural programming will focus on process where as functional programming will focus on data.
+Functional programming provide more secure than Structural Programming.
+
+How to create Stream API??
+
+Stream Api is used to achieve FUnctional programming
+Stream API ->>Intermediate operations + terminal operations
+Stream API will not modify the data why because stream Api will not store any data.
+Stream Api will capture data from source
+Source may be Arrays or collections
+
+Stream APi is divided into 2 types::
+
+  a.sequential Stream API
+  b.Parallel Stream API
+
+  Stream Creation::
+  ----------------
+  Arrays.stream()
+  COllectionObject.stream()
+  Stream.empty()
+  stream.of()
+
+  Stream API divided into 3 types
+
+  Arrays --->Stream --Operations
+  List/Set-->Stream --Operations
+  Map     -->Stream --Operations
+
+how to Convert Arrays to stream??
+------------------------------
+       //convert Array into Stream
+         long count = Arrays.stream(a).count();
+         System.out.println(count);
+
+how to iterate Array??
+-------------------
+      //iterate over Arrays
+        for (int i=0;i<a.length;i++) {
+            System.out.println(a[i]);
+        }
+
+  //WIth foreach method iterate
+          //foreach iterate
+          Arrays.stream(a).forEach(
+                  (x)-> System.out.println(x)
+          );
+
+-------------------
+Array Sorting???
+        //Arrays sorting
+        Arrays.stream(a).sorted().forEach(x->System.out.println(x));
+-------------------
+Q.how to remove duplicates in arrays using Stream?
+ //remove dups wirth asceding order
+ Arrays.stream(a).sorted().distinct().forEach((x)->System.out.println(x));
+
+Array Sum--
+----------
+        int [] a={10,20,30,40,22,30};
+        int sum=0;
+        //with streams
+        Arrays.stream(a).sum();
+        System.out.println(sum);
+
+ Array Average:
+---------------
+        OptionalDouble v = Arrays.stream(a).average();
+        System.out.println(v.getAsDouble());
+
+Min & max:
+--------
+        //min max
+        Arrays.stream(a).min().getAs((x)->System.out.println("print min"+x));
+        //max
+        Arrays.stream(a).max().ifPresent((x)->System.out.println("print max"+x));
+
+//find first and find Last
+
+//to check stream is Sequential or parallel
+        int [] b={10,11,12,13,14};
+        boolean flag=Arrays.stream(b).isParallel();
+        System.out.println(flag);
+
+//o.p is false which means stream is sequential
+        //in sequential stream one by one data is processed
+        int [] c={10,11,12,13,14};
+        boolean flag1=Arrays.stream(c).parallel().isParallel();
+        System.out.println(flag1);
+--------------------------------------------------
+STREAM API is divided into 2 types::
+Sequential Stream
+parallel stream
+--------------------------------------------------
+Sequential Stream-to fetch specific or few data record-
+---------------
+by using Arrays.stream or CollectObj.stream()
+we will create sequential Stream
+
+isParallel()
+ return boolean value
+ false--> stream is sequential
+ true --> Stream is parallel
+
+         //o.p is false which means stream is sequential
+         //in sequential stream one by one data is processed
+
+ Parallel Stream:to fetch lakhs of records:
+ ===============
+      int [] c={10,11,12,13,14};
+        boolean flag1=Arrays.stream(c).parallel().isParallel();
+        System.out.println(flag1);
+
+ ------------------------------------------------------------------------
+ STREAM API is combination of->Intermediate operations + Terminal Operations
+| Operation            | Description                                                                     | Example                               |
+|----------------------|---------------------------------------------------------------------------------|---------------------------------------|
+| filter()             | Selects elements based on a condition.                                          | stream.filter(n -> n > 10)            |
+| map()                | Transforms each element into another form.                                      | stream.map(String::toUpperCase)       |
+| flatMap()            | Flattens nested collections into a single stream.                               | list.stream().flatMap(List::stream)   |
+| distinct()           | Removes duplicate elements.                                                     | stream.distinct()                     |
+| sorted()             | Sorts elements in natural or custom order.                                      | stream.sorted()                       |
+| peek()               | Performs an action on each element without modifying it (mainly for debugging). | stream.peek(System.out::println)      |
+| limit()              | Returns the first `n` elements.                                                 | stream.limit(5)                       |
+| skip()               | Skips the first `n` elements.                                                   | stream.skip(2)                        |
+| takeWhile() (Java 9+) | Takes elements while a condition is true.                                      | stream.takeWhile(n -> n < 10)         |
+| dropWhile() (Java 9+) | Drops elements while a condition is true.                                      | stream.dropWhile(n -> n < 10)         |
+|----------------------|---------------------------------------------------------------------------------|---------------------------------------|
+
+**Terminal Stream Methods (Java):
+-->Terminal operations will produce final results
+ | Operation            | Description                                                          | Example                                     |
+ |----------------------|----------------------------------------------------------------------|---------------------------------------------|
+ | forEach()            | Performs an action on each element.                                  | stream.forEach(System.out::println)         |
+ | forEachOrdered()     | Performs an action on each element while preserving encounter order.  | stream.forEachOrdered(System.out::println) |
+ | collect()            | Collects stream elements into a collection or another data structure. | stream.collect(Collectors.toList())        |
+ | toArray()            | Converts the stream into an array.                                   | stream.toArray()                            |
+ | reduce()             | Combines all elements into a single result.                          | stream.reduce(Integer::sum)                 |
+ | count()              | Returns the number of elements in the stream.                        | stream.count()                              |
+ | min()                | Returns the smallest element according to a comparator.              | stream.min(Integer::compareTo)              |
+ | max()                | Returns the largest element according to a comparator.               | stream.max(Integer::compareTo)              |
+ | findFirst()          | Returns the first element of the stream.                             | stream.findFirst()                          |
+ | findAny()            | Returns any element from the stream (useful for parallel streams).   | stream.findAny()                            |
+ | anyMatch()           | Returns true if at least one element matches the given condition.    | stream.anyMatch(n -> n > 10)                |
+ | allMatch()           | Returns true if all elements match the given condition.              | stream.allMatch(n -> n > 0)                 |
+ | noneMatch()          | Returns true if no elements match the given condition.               | stream.noneMatch(n -> n < 0)                |
+ |----------------------|---------------------------------------------------------------------------------|----------------------------------|
+
+Special note-->In stream Api we can use any no of Intermediate operations and only one terminal operations.
+
+Collection --> Stream --> apply Operations
+
+Collections::
+List
+    ArrayList
+    LinkedList
+    Vector
+    stack
+    CopyOnWriteArrayList
+
+Set
+   Hashset
+   LinkedSet
+   TreeSet
+   CopyOnArraySet
+ Map
+    HashMap
+    LinkedHashmap
+    TreeMap
+    ConcurrentHashmap
+    Hashtable
+
+special note-->
+Collections will support objects not primitive
+  Primitives-->Wrapper classes -->Objects -->Collection
+
+  COllection will support homogeneous as well as heterogeneous data.
+  no need to mention size in collections
+
+  Stream API--Started::
+  ====================
+
+  collectionObj.stream()        -->sequenctial Stream
+  collectionObj.parallelStream()-->sequential Stream
+
+
+Intermediate Operations
+// filter() -- Selects elements based on a condition.
+
+
+ques::
+how to remove null values from Arraylist
+        list.stream().filter((x)->x!=null).forEach(x-> System.out.println(x));
+
+note::
+trick use in this right to left way: first filter then .... so on
+Collection / Array  →  Stream  →  Intermediate Operation(s)  →  Terminal Operation  →  Result
+Intermediate Operations →  filter() → map() → sorted() → distinct() → limit() → skip()
+Terminal Operations →  forEach() → collect() → count() → reduce() → min() → max() → findFirst()
+
+//Lazy intermediate and terminal operation foreach is eager in nature
+//Intermediate operations get evaluated if terminal operations get executed.
+
+
+limit() Intermediate Operations--
+-------
+limit wil take size as input
+limit --return streams which contains 2 elements
+---------------------------------------------------------------
+
+TerminalOps
+forEach() → collect() → count() → reduce() → min() → max() → findFirst()
+
+---------------------------------------------------------------
+
+List-->STream-COllectors.toList->List and viceversa
+
+findFirst(),findany(),anymatch(),allmatch() , noneMatch()
+
+
+   List<Integer> list=new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(3);
+        list.add(4);
+        // count() --Returns the number of elements in the stream. i,e size
+        long count = list.stream().count();
+        System.out.println(count);
+
+        //reduce() -->reduce the data into single element
+        Optional<Integer> reduce = list.stream().distinct().reduce((a, b) -> a + b);
+        System.out.println(reduce.get());
+
+        //for each() -->for each take consumer as input process one by one element and finally displayed to end user
+        list.stream().distinct().forEach(x-> System.out.println(x));
+
+        //toArray is used to convert stream to array
+        Object[] array = list.stream().distinct().toArray();
+        // System.out.println(Arrays.toString(array));
+        //same as sout
+        for (Object a:array){
+            System.out.println(a);
+        }
+
+        //max
+        Optional<Integer> max = list.stream()
+                .max((v1, v2) -> v1.compareTo(v2));
+        System.out.println("max"+":" +max.get());
+
+        //min
+        Optional<Integer> min = list.stream()
+                .min((v1, v2) -> v1.compareTo(v2));
+        System.out.println("max"+":" +min.get());
+
+        //collect
+        //it is used to convert the processed stream into a Collection or another data structure.
+
+        List<Integer> collect = list.stream()
+                .distinct()
+                .collect(Collectors.toList());
+        System.out.println(collect);
+
+        //List-->STream-COllectors.toList->List  and viceversa for collect()
+
+        //findFirst
+        Optional<Integer> first = list.stream().findFirst();
+        System.out.println("find first"+":" +first.get());
+
+        //findany
+        Optional<Integer> findany = list.stream().findAny();
+        System.out.println("findany"+":" +first.get());
+
+        //anymatch(),allmatch(),nonematch()
+        //--will take predicate as an input return true if any element satisfy given conditons else return false
+        List<String> stringlist=new ArrayList<>();
+        stringlist.add("abhis");
+        stringlist.add("hello");
+        stringlist.add("world");
+        //anymatch
+        boolean b = stringlist.stream().anyMatch(x->x.startsWith("he"));
+        System.out.println(b);
+        //all match --every element have to start with a then it will become true.
+        boolean b1 = stringlist.stream().allMatch(x->x.startsWith("a"));
+        System.out.println(b1);
+        //none match--used when no element is matching with your list of strings
+        boolean b2 = stringlist.stream().noneMatch(x->x.startsWith("kartik"));
+        System.out.println(b2);
+
+ ---------------------------------------------------------------------------
+MAP::
+suppose we want to store data in form of key,value pair we will go for map
+key should be unique
+value should be duplicate
+ex-gmail username-key,password-value
+keySet()  -is used to get only key
+values()  -is used to get only values
+entrySet()-to get both key and value
+Getting keys only using only using stream Api
+--------------------
