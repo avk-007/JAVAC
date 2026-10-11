@@ -10,6 +10,7 @@ package Threads;
         }
     }
 }*/
+//no use for below demo main
 class Bca implements Runnable{
     public void run(){
         for (int i=1;i<=7;i++)
@@ -21,9 +22,9 @@ class Bca implements Runnable{
         }
     }
 }
-public class DemowithLambdaExpression {
+public class DemoWithLambdaExpression {
     public static void main(String[] args) {
-        //converted to lamdaa expression
+        //converted to lambda expression
 /*        Runnable a=new Runnable() {
             public void run(){
                 for (int i=1;i<=4;i++)
@@ -36,6 +37,7 @@ public class DemowithLambdaExpression {
             }
         };*/
 
+        //directly written with runnable with LE
          Runnable a=()-> {
              for (int i = 1; i <= 4; i++)
                  System.out.println("hi");
@@ -55,9 +57,6 @@ public class DemowithLambdaExpression {
                 throw new RuntimeException(e);
             }
         };
-
-
-
         // b.setPriority(Thread.MIN_PRIORITY);
         Thread t1=new Thread(a);
         Thread t2=new Thread(b);

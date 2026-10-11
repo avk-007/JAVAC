@@ -23,9 +23,9 @@ class B extends Thread{
 }
 public class Demo {
     public static void main(String[] args) {
-        Runnable a=new A();
+      Runnable a=new A();
         Runnable b=new B();
-       // b.setPriority(Thread.MIN_PRIORITY);
+       //b.setPriority(Thread.MIN_PRIORITY);
         Thread t1=new Thread(a);
         Thread t2=new Thread(b);
         t1.start();
@@ -38,7 +38,7 @@ Multiple threads run at same time in a code.
 This is known as Multithreading.
 
 - A thread is a smallest unit to work with. (individual task)
-- They can run parallely.
+- They can run in parallel.
 - Multiple threads can share resources.
 
 */

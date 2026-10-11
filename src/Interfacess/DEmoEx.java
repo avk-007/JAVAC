@@ -29,7 +29,8 @@ public class DEmoEx {
         //interfaces references
         Computer laptopp=new Laptop();
         Computer desktopp=new Desktop();
+
         Developer abhishek=new Developer();
-        abhishek.develop(laptopp);
+        abhishek.develop(desktopp); //or laptop you chose
     }
 }

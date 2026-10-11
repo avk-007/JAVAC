@@ -31,11 +31,12 @@ class B implements A,Y{
 }
 public class Demo {
     public static void main(String[] args) {
-         A obj; //refernce obj of A
+         A obj; //reference obj of A
          obj=new B();
         obj.show();
         obj.config();
         //to call run
+        //in interface you will only get methods
         X x=new B();
         x.run();
         System.out.println( A.age);

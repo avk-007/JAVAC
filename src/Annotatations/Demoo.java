@@ -13,7 +13,6 @@ class B extends A{
     }
 }
 
-
 //metaData
 public class Demoo {
 
